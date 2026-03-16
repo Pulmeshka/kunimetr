@@ -1,0 +1,151 @@
+:root {
+    /* Светлая тема (твой градиент) */
+    --bg: radial-gradient(circle, #e894ff 0%, #ff6a92 100%);
+    --text: #000000;
+    --card-bg: rgba(255, 255, 255, 0.25);
+    --card-border: rgba(255, 255, 255, 0.4);
+    --btn-shadow: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="dark"] {
+    /* Темная тема (фиолетовые оттенки) */
+    --bg: radial-gradient(circle, #2d1b4e 0%, #120c1f 100%);
+    --text: #ffffff;
+    --card-bg: rgba(20, 15, 30, 0.6);
+    --card-border: rgba(138, 43, 226, 0.3);
+    --btn-shadow: rgba(138, 43, 226, 0.4);
+}
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: var(--bg);
+    background-attachment: fixed;
+    color: var(--text);
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+    transition: all 0.5s ease;
+}
+
+.container {
+    width: 90%;
+    max-width: 1000px;
+    padding-top: 80px;
+    text-align: center;
+}
+
+/* Кнопка смены темы */
+.theme-switch {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background: var(--card-bg);
+    backdrop-filter: blur(10px);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: 1px solid var(--card-border);
+    font-size: 24px;
+    z-index: 1000;
+    transition: 0.3s;
+}
+
+.theme-switch:hover {
+    transform: rotate(15deg) scale(1.1);
+}
+
+/* Переключатель платформ */
+.platform-selector {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    margin-bottom: 50px;
+}
+
+.option {
+    cursor: pointer;
+    transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    opacity: 0.6;
+}
+
+.option img {
+    width: 70px;
+    filter: drop-shadow(0 5px 15px rgba(0,0,0,0.1));
+}
+
+.option.active {
+    opacity: 1;
+    transform: scale(1.15);
+}
+
+.option:hover {
+    opacity: 0.9;
+    transform: translateY(-10px);
+}
+
+/* Страницы */
+.page {
+    display: none;
+    animation: fadeIn 0.8s ease;
+    background: var(--card-bg);
+    padding: 50px;
+    border-radius: 30px;
+    backdrop-filter: blur(15px);
+    border: 1px solid var(--card-border);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.page.active { display: block; }
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* Кнопки */
+.btn {
+    display: inline-block;
+    padding: 15px 35px;
+    margin: 10px;
+    border-radius: 15px;
+    text-decoration: none;
+    font-weight: bold;
+    color: white;
+    transition: 0.3s;
+}
+
+.discord-btn { background: #5865F2; }
+.telegram-btn { background: #24A1DE; }
+.btn.secondary { 
+    background: rgba(255,255,255,0.1); 
+    border: 1px solid var(--card-border);
+    color: var(--text);
+}
+.btn.three { background: #e900ba; }
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px var(--btn-shadow);
+}
+
+/* Футер */
+footer {
+    margin-top: 100px;
+    padding-bottom: 50px;
+    border-top: 1px solid var(--card-border);
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding-top: 30px;
+}
+
+.footer-section { max-width: 300px; text-align: left; }
+.copyright { opacity: 0.6; margin-top: 30px; }
